@@ -1,7 +1,72 @@
+.card_search{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  background-color: #232323;
+  margin-bottom: 10px;
+
+  h1{
+    color: #fff;
+    padding-bottom: 15px;
+  }
+
+  div{
+    width: 40%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input{
+      padding-left: 10px;
+      margin-right: 10px;
+      width: 70%;
+      height: 21px;
+      border: none;
+      border-radius: 10px;
+
+      &::placeholder{
+        margin-left: 10px;
+        padding-left: 10px;
+        font-weight: 500;
+        font-style: italic;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+    }
+
+    button {
+      color: #ecf0f1;
+      font-size: 12px;
+      background-color: #227de6;
+      border: 1px solid #227de6;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 8px;
+      box-shadow: 0px 6px 0px #6f93fe;
+      transition: all 0.1s;
+
+      &:hover {
+        box-shadow: 0px 2px 0px #6f93fe;
+        position: relative;
+        top: 2px;
+      }
+    }
+
+
+
+  }
+}
+
 .card{
-  border: 1px solid black;
+  margin-left: 1rem;
   width: 250px;
-  height: 370px;
+  height: 330px;
 
   display: flex;
   flex-direction: column;

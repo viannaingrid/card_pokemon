@@ -16,15 +16,17 @@ export class CardComponent {
     },
     types:[]
   }
-  name:string = "Charizard"
-  attributesTypes:string[] = ['Fire', 'Rock']
 
   constructor(
     private service:PokemonService
   ){}
 
   ngOnInit():void{
-    this.service.getPokemon("charizard").subscribe({
+    this.getPokemon('pikachu')
+  }
+
+  getPokemon(searchName:string){
+    this.service.getPokemon(searchName).subscribe({
       next:(res) => {
 
         this.pokemon = {
@@ -36,7 +38,7 @@ export class CardComponent {
         console.log(res)
         console.log(this.pokemon)
       },
-      error: (err) => console.log(err)
+      error: (err) => console.log('not found')
     })
   }
 }

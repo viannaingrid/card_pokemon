@@ -1,4 +1,11 @@
-<h1>Pokedex</h1>
+<section class="card_search">
+  <h1>Pokedex</h1>
+  <!-- caso queira digitar e ele pesquisa automatico usar o input (click)="getPokemon($any($event.target).value)" -->
+  <div>
+    <input type="text" #searchName placeholder="Digite seu pokemon" >
+    <button (click)="getPokemon(searchName.value)">Pesquisar</button>
+  </div>
+</section>
 <section class="card">
   <div class="card__title">
     <h1>{{ pokemon.name }}</h1>
