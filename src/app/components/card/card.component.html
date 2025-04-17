@@ -1,0 +1,12 @@
+<h1>Pokedex</h1>
+<section class="card">
+  <div class="card__title">
+    <h1>{{ name }}</h1>
+  </div>
+  <div class="card__body">
+    <img src="" alt="pokemon">
+  </div>
+  <div class="card__stats">
+    <span class="card__stats__type" *ngFor="let type of attributesTypes">{{ type }}</span>
+  </div>
+</section>
