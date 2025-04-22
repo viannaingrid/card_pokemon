@@ -14,7 +14,9 @@ export class CardComponent {
     sprites:{
       front_default:''
     },
-    types:[]
+    types:[],
+    abilities:[],
+    moves:[]
   }
 
   constructor(
@@ -30,10 +32,12 @@ export class CardComponent {
       next:(res) => {
 
         this.pokemon = {
-          id:      res.id,
-          name:    res.name,
-          sprites: res.sprites,
-          types:   res.types
+          id:        res.id,
+          name:      res.name,
+          sprites:   res.sprites,
+          types:     res.types,
+          abilities: res.abilities,
+          moves:     res.moves
         }
         console.log(res)
         console.log(this.pokemon)

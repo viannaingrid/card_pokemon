@@ -24,3 +24,4 @@ export class PokemonService {
     return this.pokeData
   }
 }
+
