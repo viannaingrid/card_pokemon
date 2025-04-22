@@ -6,8 +6,8 @@
     <button (click)="getPokemon(searchName.value)">Search</button>
   </div>
 </section>
-<main>
-  <section class="card">
+<!-- </section>
+  <ol id="pokemonsList" class="pokemons" class="card">
     <div class="card__title">
       <h1>{{ pokemon.name }}</h1>
     </div>
@@ -18,13 +18,33 @@
       <span class="card__stats__type" *ngFor="let t of pokemon.types">
         {{ t.type.name }}</span>
     </div>
-  </section>
-  <aside>
-    <section class="container_abilities">
-      <h2 >List of abilities</h2>
-      <div class="list_abilities" *ngFor="let a of pokemon.abilities">
-        <p>{{a.ability.name}}</p>
-      </div>
-    </section>
-  </aside>
-</main>
+  </ol>
+<section class="pagination">
+  <button (click)="loadMore()" *ngIf="offset + limit < maxRecords" id="loadMore" type="button" >
+    Load More
+  </button>
+</section> -->
+<section>
+<ul id="pokemonsList" class="pokemon-list  card">
+  <li *ngFor="let p of pokemon" class="pokemon-card">
+    <div class="card__title">
+      <span class="number">#{{ p.id }}</span>
+      <span class="name">{{ p.name }}</span>
+    </div>
+    <div class="card__body">
+      <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+    </div>
+    <div class="detail">
+      <ol class="types card__stats__type">
+        <li *ngFor="let t of pokemon.types" class="type">
+          {{ t.type.name }}
+        </li>
+      </ol>
+    </div>
+  </li>
+</ul>
+<section class="pagination">
+  <button (click)="loadMore()" *ngIf="offset + limit < maxRecords" id="loadMore" type="button" >
+    Load More
+  </button>
+</section>

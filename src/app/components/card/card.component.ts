@@ -8,23 +8,55 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  pokemon:PokemonData = {
+  pokemon:PokemonData | any = {
     id: 0,
     name:'',
     sprites:{
       front_default:''
     },
-    types:[],
-    abilities:[],
-    moves:[]
+    types:[]
   }
+
+  offset: number = 0;
+  limit: number = 10;
+  maxRecords: number = 151;
 
   constructor(
     private service:PokemonService
   ){}
 
   ngOnInit():void{
-    this.getPokemon('pikachu')
+    // this.getPokemon('pikachu')
+    this.loadPokemons();
+  }
+
+  loadPokemons(): void {
+    this.service.getPokemonList(this.offset, this.limit).subscribe({
+      next: (res) => {
+        const requests = res.results.map((p: any) =>
+          this.service.getPokemon(p.name).toPromise()
+        );
+
+        Promise.all(requests).then((results: PokemonData[]) => {
+          this.pokemon = [...this.pokemon, ...results];
+        });
+      },
+      error: () => console.log('Erro ao carregar a lista de pokémons')
+    });
+  }
+
+  loadMore(): void {
+    this.offset += this.limit;
+
+    if (this.offset >= this.maxRecords) {
+      const newLimit = this.maxRecords - this.offset;
+      if (newLimit > 0) {
+        this.limit = newLimit;
+        this.loadPokemons();
+      }
+    } else {
+      this.loadPokemons();
+    }
   }
 
   getPokemon(searchName:string){
@@ -35,9 +67,7 @@ export class CardComponent {
           id:        res.id,
           name:      res.name,
           sprites:   res.sprites,
-          types:     res.types,
-          abilities: res.abilities,
-          moves:     res.moves
+          types:     res.types
         }
         console.log(res)
         console.log(this.pokemon)
