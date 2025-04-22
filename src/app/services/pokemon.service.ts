@@ -16,17 +16,11 @@ export class PokemonService {
     this.baseUrl = environment.pokeApi
   }
 
-  getPokemonList(offset: number, limit: number): Observable<any> {
-    return this
-              .http
-              .get<any>(`${this.baseUrl}?offset=${offset}&limit=${limit}`);
-  }
-
   getPokemon(pokemonName:string):Observable<PokemonData>{
     this.pokeData = this
                     .http
                     .get<PokemonData>
-                    (`${this.baseUrl}/${pokemonName}`)
+                    (`${this.baseUrl}${pokemonName}`)
     return this.pokeData
   }
 }
