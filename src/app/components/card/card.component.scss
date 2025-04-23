@@ -65,6 +65,11 @@
   }
 }
 
+main{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .card{
   margin-left: 1rem;
   width: 250px;
@@ -74,6 +79,7 @@
   flex-direction: column;
   background-color: #232323 ;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .card__title{
@@ -269,4 +275,10 @@
   width: 60%;
   height: 5vh;
   font-size: 20px;
+
+  &:active {
+    box-shadow: 0px 2px 0px #6f93fe;
+    position: relative;
+    top: 2px;
+  }
 }
