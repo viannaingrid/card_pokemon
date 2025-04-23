@@ -3,11 +3,11 @@
   <!-- caso queira digitar e ele pesquisa automatico usar o input (click)="getPokemon($any($event.target).value)" -->
   <div>
     <input type="text" #searchName placeholder="Digite seu pokemon" >
-    <button (click)="getPokemon(searchName.value)">Search</button>
+    <button (click)="searchPokemon(searchName.value)">Search</button>
   </div>
 </section>
 <main>
-  <section *ngFor="let pokemon of pokemon" class="card">
+  <section *ngFor="let pokemon of pokemonData" class="card">
     <ul >
       <div class="card__title">
         <h1>{{ pokemon.name }}</h1>
@@ -24,7 +24,7 @@
     </section>
     </main>
     <section class="pagination">
-  <button  id="loadMore" type="button">
+  <button (click)="loadMore(10)" id="loadMore" type="button">
     Load More
   </button>
 </section>

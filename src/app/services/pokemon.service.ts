@@ -25,9 +25,9 @@ export class PokemonService {
     return this.pokeData
   }
 
-  defaultPokemon(limit:number) {
+  defaultPokemon(limit:number, offset: number) {
     const url = environment.pokeApi
-    return this.http.get<any>(`${url}/?${limit}`)
+    return this.http.get<any>(`${url}?limit=${limit}&offset=${offset}`)
     }
 }
 

@@ -9,45 +9,53 @@ import { InfoPokemons } from '../../models/pokemonData';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  public pokemon:PokemonData | any= {
-    id: 0,
-    name:'',
-    sprites:{
-      front_default:''
-    },
-    types:[]
-  }
 
-  InfoPokemons: InfoPokemons |any [] = []
-  PokemonData: PokemonData[] = []
+
+  pokemonData: PokemonData[] = []
+  offsetCount: number = 3
 
   constructor(
     private service:PokemonService
   ){}
 
   ngOnInit():void{
-    this.defaultPokemon(10)
+    this.defaultPokemon(10,0)
+  }
+
+searchPokemon(searchName: string){
+  this.pokemonData =[]
+  this.getPokemon(searchName)
+}
+
+  loadMore(limit: number){
+    this.offsetCount += limit
+    this.service.defaultPokemon(limit, this.offsetCount).subscribe({
+      next:(res: any) => {
+        res.results.forEach((result: any) => {
+          this.getPokemon(result.name)
+
+
+        });
+      }
+    })
   }
 
   getPokemon(searchName:any ){
     this.service.getPokemon(searchName).subscribe({
       next:(res: any) => {
 
-        this.pokemon.push = {
-          id:        res.id,
-          name:      res.name,
-          sprites:   res.sprites,
-          types:     res.types
-        }
-        console.log(res)
-        console.log(this.pokemon)
+        this.pokemonData.sort((a, b) => a.id - b.id);
+        this.pokemonData.push(
+          res
+        )
+
       }
     })
   }
 
 
-  defaultPokemon(limit: number): void {
-    this.service.defaultPokemon(limit).subscribe({
+  defaultPokemon(limit: number, offset: number): void {
+    this.service.defaultPokemon(limit, offset).subscribe({
       next: (res: any) => {
         res.results.forEach((result: any) => {
           this.getPokemon(result.name);
