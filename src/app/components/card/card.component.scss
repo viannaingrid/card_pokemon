@@ -269,4 +269,10 @@
   width: 60%;
   height: 5vh;
   font-size: 20px;
+
+  &:active {
+    box-shadow: 0px 2px 0px #6f93fe;
+    position: relative;
+    top: 2px;
+  }
 }

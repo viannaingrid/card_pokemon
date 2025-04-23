@@ -12,6 +12,7 @@ export class PokemonService {
   private baseUrl:string = ""
   private pokeData:PokemonData | any
 
+
   constructor(private http:HttpClient) {
     this.baseUrl = environment.pokeApi
   }
@@ -23,5 +24,10 @@ export class PokemonService {
                     (`${this.baseUrl}${pokemonName}`)
     return this.pokeData
   }
+
+  defaultPokemon(limit:number) {
+    const url = environment.pokeApi
+    return this.http.get<any>(`${url}/?${limit}`)
+    }
 }
 
