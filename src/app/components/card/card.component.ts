@@ -19,7 +19,7 @@ export class CardComponent {
   }
 
   InfoPokemons: InfoPokemons |any [] = []
-  PokemonData: PokemonData | any [ ] = []
+  PokemonData: PokemonData[] = []
 
   constructor(
     private service:PokemonService
@@ -33,7 +33,7 @@ export class CardComponent {
     this.service.getPokemon(searchName).subscribe({
       next:(res: any) => {
 
-        this.pokemon = {
+        this.pokemon.push = {
           id:        res.id,
           name:      res.name,
           sprites:   res.sprites,
