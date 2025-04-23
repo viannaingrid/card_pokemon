@@ -1,7 +1,7 @@
 export type PokemonData = {
   name:string
-  url: string
-  /* id:number
+
+  id:number
   sprites: {
     front_default: string
   }
@@ -11,7 +11,7 @@ export type PokemonData = {
       name: string;
       url: string;
     }
-  }[] */
+  }[]
 
 }
 

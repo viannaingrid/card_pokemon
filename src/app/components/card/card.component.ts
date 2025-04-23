@@ -1,7 +1,7 @@
-import { InfoPokemons } from './../../models/pokemonData';
 import { Component, OnInit } from '@angular/core';
 import { PokemonData } from 'src/app/models/pokemonData';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { InfoPokemons } from '../../models/pokemonData';
 
 @Component({
   selector: 'app-card',
@@ -9,55 +9,50 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  public infoPokemons:InfoPokemons = {
+  public pokemon:PokemonData = {
     id: 0,
+    name:'',
     sprites:{
       front_default:''
     },
     types:[]
   }
 
-  pokemons:PokemonData[] = [
-
-  ]
-
-  maxRecords = 151
-  public limit:number = 10
-  public offset:number = 0
+  InfoPokemons: InfoPokemons [] = []
+  PokemonData: PokemonData [ ] = []
 
   constructor(
-    public service:PokemonService
+    private service:PokemonService
   ){}
 
   ngOnInit():void{
-    this.defaultPokemon(0)
-
+    this.defaultPokemon(10)
   }
 
   getPokemon(searchName:string ){
     this.service.getPokemon(searchName).subscribe({
       next:(res: any) => {
 
-        this.infoPokemons = {
+        this.pokemon = {
           id:        res.id,
+          name:      res.name,
           sprites:   res.sprites,
           types:     res.types
         }
         console.log(res)
-        console.log(this.infoPokemons)
+        console.log(this.pokemon)
       }
     })
   }
 
-  defaultPokemon(limit: number){
+
+  defaultPokemon(limit: number): void {
     this.service.defaultPokemon(limit).subscribe({
-      next:(res: any) => {
-        this.pokemons = res.results
-        console.log(res)
+      next: (res: any) => {
+        res.results.forEach((result: any) => {
+          this.getPokemon(result.name);
+        });
       }
-    })
-
-
-
+    });
   }
 }
