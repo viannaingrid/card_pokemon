@@ -8,23 +8,23 @@
 </section>
 <main>
   <section class="card">
-    <div class="card__title">
-      <h1>{{ pokemon.name }}</h1>
-    </div>
-    <div class="card__body">
-      <img [src]="pokemon.sprites.front_default" alt="pokemon">
-    </div>
-    <div class="card__stats">
-      <span class="card__stats__type" *ngFor="let t of pokemon.types">
-        {{ t.type.name }}</span>
-    </div>
-  </section>
-  <aside>
-    <section class="container_abilities">
-      <h2 >List of abilities</h2>
-      <div class="list_abilities" *ngFor="let a of pokemon.abilities">
-        <p>{{a.ability.name}}</p>
+    <ul>
+      <div class="card__title">
+        <h1>{{ pokemon.name }}</h1>
+        <h2>{{ pokemon.id }}</h2>
       </div>
+      <div class="card__body">
+        <img [src]="pokemon.sprites.front_default" alt="pokemon">
+      </div>
+      <div class="card__stats">
+        <span class="card__stats__type" *ngFor="let t of pokemon.types">
+          {{ t.type.name }}</span>
+        </div>
+      </ul>
     </section>
-  </aside>
-</main>
+    </main>
+    <section class="pagination">
+  <button id="loadMore" type="button">
+    Load More
+  </button>
+</section>
