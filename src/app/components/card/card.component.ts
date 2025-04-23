@@ -9,7 +9,7 @@ import { InfoPokemons } from '../../models/pokemonData';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  public pokemon:PokemonData = {
+  public pokemon:PokemonData | any= {
     id: 0,
     name:'',
     sprites:{
@@ -18,8 +18,8 @@ export class CardComponent {
     types:[]
   }
 
-  InfoPokemons: InfoPokemons [] = []
-  PokemonData: PokemonData [ ] = []
+  InfoPokemons: InfoPokemons |any [] = []
+  PokemonData: PokemonData | any [ ] = []
 
   constructor(
     private service:PokemonService
@@ -29,7 +29,7 @@ export class CardComponent {
     this.defaultPokemon(10)
   }
 
-  getPokemon(searchName:string ){
+  getPokemon(searchName:any ){
     this.service.getPokemon(searchName).subscribe({
       next:(res: any) => {
 
