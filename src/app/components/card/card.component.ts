@@ -33,7 +33,7 @@ searchPokemon(searchName: string){
       next:(res: any) => {
         res.results.forEach((result: any) => {
           this.getPokemon(result.name)
-
+          this.pokemonData.sort((a, b) => a.id - b.id);
 
         });
       }
@@ -57,6 +57,7 @@ searchPokemon(searchName: string){
   defaultPokemon(limit: number, offset: number): void {
     this.service.defaultPokemon(limit, offset).subscribe({
       next: (res: any) => {
+        this.pokemonData.sort((a, b) => a.id - b.id);
         res.results.forEach((result: any) => {
           this.getPokemon(result.name);
         });
