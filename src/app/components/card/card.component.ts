@@ -12,7 +12,7 @@ export class CardComponent {
 
 
   pokemonData: PokemonData[] = []
-  offsetCount: number = 3
+  offsetCount: number = 0
 
   constructor(
     private service:PokemonService
@@ -20,6 +20,7 @@ export class CardComponent {
 
   ngOnInit():void{
     this.defaultPokemon(10,0)
+    this.pokemonData.sort((a, b) => a.id - b.id);
   }
 
 searchPokemon(searchName: string){

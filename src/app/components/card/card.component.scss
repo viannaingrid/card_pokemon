@@ -8,7 +8,6 @@
 
   padding: 20px;
   background-color: #232323;
-  margin-bottom: 10px;
 
   h1{
     color: #fff;
@@ -68,6 +67,8 @@
 main{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  background-image: url('https://criticalhits.com.br/wp-content/uploads/2019/11/pok%C3%A9mon-arena.png');
+  background-size: cover;
 }
 
 .card{
@@ -79,7 +80,7 @@ main{
   flex-direction: column;
   background-color: #232323 ;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px ;
 }
 
 .card__title{
@@ -280,5 +281,28 @@ main{
     box-shadow: 0px 2px 0px #6f93fe;
     position: relative;
     top: 2px;
+  }
+}
+
+@media(max-width: 390px){
+
+  .card_search{
+    width: 68.80%;
+
+    div{
+      width: 100%;
+    }
+  }
+
+  main{
+    width: 68.80%;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 1rem;
+  }
+
+  .card{
+    width: 85%;
+    height: 100%;
   }
 }
