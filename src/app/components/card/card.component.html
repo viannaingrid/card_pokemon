@@ -10,7 +10,7 @@
   <section *ngFor="let pokemon of pokemonData" class="card">
     <ul >
       <div class="card__title">
-        <h1>{{ pokemon.name }}</h1>
+        <h1>{{ pokemon.name | titlecase }}</h1>
         <h2>{{ pokemon.id }}</h2>
       </div>
       <div class="card__body">
@@ -18,7 +18,7 @@
       </div>
       <div class="card__stats">
         <span class="card__stats__type" *ngFor="let t of pokemon.types">
-          {{ t.type.name }}</span>
+          {{ t.type.name | titlecase }}</span>
         </div>
       </ul>
     </section>
